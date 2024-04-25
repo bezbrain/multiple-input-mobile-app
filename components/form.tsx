@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import InputFields from "./inputFields";
 
 const Form = () => {
+  const [inputValues, setInputValues] = useState({
+    amount: "",
+    date: "",
+    desc: "",
+  });
+
+  const { amount, date, desc } = inputValues;
+
   const valuesInputChange = () => {
     //
   };
@@ -12,17 +20,29 @@ const Form = () => {
       <View style={styles.shortInputsContainer}>
         <InputFields
           label="Amount"
-          inputConStyle={styles.numberInput}
+          inputConStyle={styles.numberInputCon}
           type="number-pad"
           onChange={valuesInputChange}
+          value={amount}
+          multiline={false}
         />
         <InputFields
           label="Date"
-          inputConStyle={styles.numberInput}
+          inputConStyle={styles.numberInputCon}
           onChange={valuesInputChange}
+          value={date}
+          multiline={false}
+          maxLength={10}
         />
       </View>
-      <InputFields label="Description" onChange={valuesInputChange} />
+      <InputFields
+        label="Description"
+        inputConStyle={styles.descInputCon}
+        onChange={valuesInputChange}
+        value={desc}
+        multiline={true}
+        inputStyle={styles.multilineInput}
+      />
     </View>
   );
 };
@@ -33,13 +53,18 @@ const styles = StyleSheet.create({
   shortInputsContainer: {
     // borderWidth: 3,
     flexDirection: "row",
+    // justifyContent: "space-between",
     // gap: 8,
   },
-  numberInput: {
+  numberInputCon: {
     width: "50%",
   },
-  dateInput: {
-    // minWidth: "50%",
-    // minWidth: 200,
+  descInputCon: {
+    marginTop: 16,
+  },
+  multilineInput: {
+    minHeight: 100,
+    textAlignVertical: "top",
+    paddingVertical: 8,
   },
 });

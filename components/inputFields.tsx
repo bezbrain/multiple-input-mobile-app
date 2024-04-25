@@ -7,7 +7,10 @@ interface InputFieldsProps {
   type?: any;
   placeholder?: string;
   inputConStyle?: Object;
+  inputStyle?: Object;
   label: string;
+  value: string;
+  multiline?: boolean;
 }
 
 const InputFields = ({
@@ -16,20 +19,22 @@ const InputFields = ({
   type,
   placeholder,
   inputConStyle,
+  inputStyle,
   label,
+  value,
+  multiline,
 }: InputFieldsProps) => {
-  // Amount
-  // Date
-  // Description
   return (
     <View style={[styles.inputContainer, inputConStyle]}>
       <Text style={styles.label}>{label}</Text>
       <TextInput
-        style={styles.input}
+        style={[styles.input, inputStyle]}
         keyboardType={type}
         onChangeText={onChange}
         maxLength={maxLength}
         placeholder={placeholder}
+        value={value}
+        multiline={multiline}
       />
     </View>
   );
@@ -39,7 +44,6 @@ export default InputFields;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    borderWidth: 2,
     // width: "50%",
   },
   label: {
