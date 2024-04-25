@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
 
 interface InputFieldsProps {
-  onChange: () => void;
+  handleChange: any;
   maxLength?: number;
   type?: any;
   placeholder?: string;
@@ -14,7 +14,7 @@ interface InputFieldsProps {
 }
 
 const InputFields = ({
-  onChange,
+  handleChange,
   maxLength,
   type,
   placeholder,
@@ -30,7 +30,7 @@ const InputFields = ({
       <TextInput
         style={[styles.input, inputStyle]}
         keyboardType={type}
-        onChangeText={onChange}
+        onChangeText={handleChange}
         maxLength={maxLength}
         placeholder={placeholder}
         value={value}
@@ -44,16 +44,16 @@ export default InputFields;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    // width: "50%",
+    // flex: 1,
   },
   label: {
-    marginBottom: 6,
+    marginBottom: 4,
   },
   input: {
     borderWidth: 1,
     borderRadius: 8,
     height: 40,
     paddingHorizontal: 12,
-    // marginTop: 16,
+    marginHorizontal: 4,
   },
 });

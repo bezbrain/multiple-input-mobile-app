@@ -15,11 +15,12 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
     // backgroundColor: "#fff",
     // alignItems: "center",
     // justifyContent: "center",
     paddingHorizontal: 16,
     paddingVertical: 48,
+    borderWidth: 3,
   },
 });
